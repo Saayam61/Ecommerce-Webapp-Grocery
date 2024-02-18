@@ -5,7 +5,7 @@
  * It tests the database connection and exports the Sequelize instance for use in other modules.
  */
 
-const dbConfig = require("../dbConfig/dbConfig.js");
+const dbConfig = require("../dbConfig/dbConfig");
 const Sequelize = require("sequelize");
 
 // Create a Sequelize instance with database configuration
@@ -42,9 +42,6 @@ const db = {};
 // Assign Sequelize and sequelize instances to the object
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
-// Import the Sequelize instance
-const sequelize = require('../db');
 
 // Import and define the model for each table
 const User = require('../model/user')(sequelize, Sequelize);
