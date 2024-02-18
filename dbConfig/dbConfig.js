@@ -1,3 +1,5 @@
+// dbConfig.js
+
 /**
  * Database Configuration
  * 
@@ -5,9 +7,7 @@
  * It retrieves database connection parameters from environment variables, allowing
  * for flexible configuration based on the deployment environment.
  * 
- * If any required environment variables are missing, the module logs an error
- * message to the console and exits the Node.js process with a non-zero exit code
- * to indicate failure.
+ * If any required environment variables are missing, the module throws an error.
  */
 
 module.exports = {
@@ -29,6 +29,5 @@ module.exports = {
 
 // Error handling
 if (!process.env.DB_USERNAME || !process.env.DB_PASSWORD || !process.env.DB_NAME || !process.env.DB_HOST) {
-    console.error("Error: Missing required environment variables for database connection.");
-    process.exit(1); // Exit the process with a non-zero exit code to indicate failure
+    throw new Error("Missing required environment variables for database connection.");
 }
