@@ -1,18 +1,13 @@
 const express = require ('express')
 const app = express()
 
-const userRoutes = require('./routes/userRoutes');
+const dotenv = require('dotenv').config()
 
-const db = require('./model/index')
-db.sequelize.sync({ force: true})
+const PORT = process.env.PORT || 3000
 
-
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-
-app.use('/api/users', userRoutes);
-
-let port = process.env.port || 3000
-app.listen(port, ()=>{
-    console.log(`Server is started in ${port}`)
+app.use('/',(req,res)=>{
+    res.send("Hello World")
+})
+app.listen(PORT,()=>{
+    console.log(`Server is running at PORT ${PORT}`);
 })
