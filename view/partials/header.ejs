@@ -1,0 +1,94 @@
+<header>
+    <nav class="navbar-expand-sm navbar-light bg-white">
+      <div class="container-lg">
+        <div class="d-flex flex-grow-1 flex-column flex-md-row">
+          <div class="d-flex align-items-center flex-grow-1">
+  
+            <div class="d-block d-sm-none">
+              <a href="/" class="w-25"><img style="height: 50px;" src="/images/web/vigilancia-argentina-logo-small.png" alt=""></a>
+            </div>
+            <div class="d-none d-sm-block">
+              <a href="/" class="w-25"><img style="height: 50px;" src="/images/web/vigilancia-argentina-logo-large.png" alt=""></a>
+            </div>
+                    
+            <div class="w-100">
+              <div class="mx-2 my-2">
+                <form class="d-inline w-100">
+                  <div class="input-group">
+                    <form action="/search" method="GET">
+                      <input type="text" name="search" class="form-control border rounded-start" placeholder="Buscar..." autocomplete="off">
+                      <span class="input-group-append">
+                        <button class="h-100 text-secondary bg-white border rounded-end" type="submit">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </span>
+                    </form>
+                  </div>
+                </form>
+              </div>
+            </div>
+    
+            <button class="d-block d-md-none  btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="true" aria-label="Toggle navigation">
+              <i class="fas fa-bars"></i>
+            </button>  
+            
+          <div class="d-none d-md-block">
+            <% if(locals.usuario) { %>
+              <div class="my-2 d-flex">
+                <a href="/logout" class="mx-1 btn btn-outline-primary text-nowrap">Cerrar sesión</a>
+                <a href="/shoppingCart" class="mx-1 btn btn-success text-nowrap"><span class="mx-1"><i class="fas fa-shopping-cart"></i></span><span class="mx-1">Carrito</span></a>
+              </div>
+            <% } else { %>
+              <div class="my-2 d-flex">
+                <a href="/register" class="mx-1 btn btn-outline-primary text-nowrap">Regirtrarse</a>
+                <a href="/login" class="mx-1 btn btn-primary text-nowrap">Ingresar</a>
+              </div>
+            <%}%>
+            </div>
+            
+          </div>
+    
+          <div class="collapse" id="navbarsExample05">
+          
+            <div class="d-block d-md-none my-2 d-flex">
+              <a href="/register" class="w-100 mx-1 btn btn-outline-primary">Regirtrarse</a>
+              <a href="/login" class="w-100 mx-1 btn btn-primary">Ingresar</a>
+            </div>
+    
+            <div class="mx-1 d-block d-md-none">
+              <div class="">
+                <a class="mb-2 btn btn-outline-primary w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownMenuLink" aria-controls="navbarDropdownMenuLink" aria-expanded="true" aria-label="Toggle navigation">
+                  Categorias      
+                </a>
+              </div>
+              <div class="collapse" class="" id="navbarDropdownMenuLink">
+                <a class="dropdown-item rounded p-2 text-center" href="/categoria/2">Vigilancia</a>
+                <a class="dropdown-item rounded p-2 text-center" href="/categoria/3">Acceso</a>
+                <a class="dropdown-item rounded p-2 text-center" href="/categoria/4">Conectividad</a>
+                <a class="dropdown-item rounded p-2 text-center" href="/categoria/5">Intrusión</a>
+                <a class="dropdown-item rounded p-2 text-center" href="/categoria/6">Portería</a>
+                <a class="dropdown-item rounded p-2 text-center" href="/categoria/7">Accesorios</a>
+              </div>
+            </div>
+    
+          </div>
+    
+        </div>
+        
+      </div>
+      </div>
+    </nav>
+    <nav class=" navbar-light bg-white d-none d-md-block">
+      <div class="container-lg">
+        <div class="d-flex justify-content-between">
+          <a class="dropdown-item rounded-top p-2 text-center" href="/categoria/2">Vigilancia</a>
+          <a class="dropdown-item rounded-top p-2 text-center" href="/categoria/3">Acceso</a>
+          <a class="dropdown-item rounded-top p-2 text-center" href="/categoria/4">Conectividad</a>
+          <a class="dropdown-item rounded-top p-2 text-center" href="/categoria/5">Intrusión</a>
+          <a class="dropdown-item rounded-top p-2 text-center" href="/categoria/6">Portería</a>
+          <a class="dropdown-item rounded-top p-2 text-center" href="/categoria/7">Accesorios</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
