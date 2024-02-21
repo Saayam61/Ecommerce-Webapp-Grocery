@@ -1,3 +1,4 @@
 exports.getIndex = (req, res) => {
-    return res.render('./../view/main/index')
+    const tValue = "New Leaf Grocery | Home"
+    return res.render('./../view/main/index', {title: tValue})
 }
