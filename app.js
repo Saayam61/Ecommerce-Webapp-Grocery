@@ -19,18 +19,19 @@ const cookieParser = require('cookie-parser')
 //environment variables
 const dotenv = require('dotenv').config()
 
+app.use(express.static(path.join(__dirname, 'public')));
 
-const db = require('./model/index')
+const db = require('./src/model/index')
 
 // db.sequelize.sync({force: true})
 
 app.set('view engine', 'ejs')
-app.set('views', 'view')
+app.set('views', './src/view')
 
 app.use(express.json());
 app.use(express.urlencoded());
 
-const indexRouter = require('./route/indexroute')
+const indexRouter = require('./src/route/indexroute')
 app.use(indexRouter)
 const PORT = process.env.PORT || 3000
 
