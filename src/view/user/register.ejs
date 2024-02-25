@@ -16,7 +16,7 @@
                         <div class="width48">
                             <div class="form-group">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" id="firstName" class="form-input" placeholder="Enter your first name"
+                                <input type="text" id="firstName" class="form-input" name="firstName" placeholder="Enter your first name"
                                     required>
                                 <span class="error-message" id="firstNameError"></span>
                             </div>
@@ -24,7 +24,7 @@
                         <div class="width48">
                             <div class="form-group">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" id="lastName" class="form-input" placeholder="Enter your last name"
+                                <input type="text" id="lastName" class="form-input" name="lastName" placeholder="Enter your last name"
                                     required>
                                 <span class="error-message" id="lastNameError"></span>
                             </div>
@@ -32,24 +32,24 @@
                     </div>
                     <div class="form-group">
                         <label for="dob" class="form-label">Date of Birth</label>
-                        <input type="date" id="dob" class="form-input" required>
+                        <input type="date" id="dob" class="form-input" name="dob" required>
                         <span class="error-message" id="dobError"></span>
                     </div>
                     <div class="form-group">
                         <label for="firstName" class="form-label">Address</label>
-                        <input type="text" id="address" class="form-input" placeholder="Enter your address"
+                        <input type="text" id="address" class="form-input" name="address" placeholder="Enter your address"
                             required>
                         <span class="error-message" id="addressError"></span>
                     </div>
                     <div class="form-group">
                         <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="+977XXXXXXXXX" value="+977" required>
+                            <input type="tel" id="phone" class="form-input" name="phone" placeholder="+977XXXXXXXXX" value="+977" required>
                         <span class="error-message" id="phoneError"></span>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-label">Password</label>
                         <div class="pw-wrapper">
-                        <input type="password" id="password" class="form-input pr-12" placeholder="Enter your password"
+                        <input type="password" id="password" class="form-input pr-12" name="password" placeholder="Enter your password"
                             required>
                         <button type="button" class="toggle-password" id="togglePassword">
                             <img src="/images/eye-slash.svg" alt="Toggle Password">
@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <div class="pw-wrapper">
-                        <input type="password" id="confirmPassword" class="form-input pr-12"
+                        <input type="password" id="confirmPassword" class="form-input pr-12" name="cpassword"
                             placeholder="Confirm your password" required>
                         <button type="button" class="toggle-password" id="toggleConfirmPassword">
                             <img src="/images/eye-slash.svg" alt="Toggle Password">
