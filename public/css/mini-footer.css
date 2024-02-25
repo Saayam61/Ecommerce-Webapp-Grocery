@@ -1,0 +1,19 @@
+.mini-footer {
+    background-color: #c1b0b0;
+    text-align: center;
+    font-size: 0.875rem;
+    padding: 1px 1px;
+}
+
+.mini-footer p {
+    color: #000;
+}
+
+.mini-footer a {
+    color: #444;
+    text-decoration: underline;
+}
+
+.mini-footer a:hover {
+    color: #777;
+}

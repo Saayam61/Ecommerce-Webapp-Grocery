@@ -18,12 +18,12 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser')
 //environment variables
 const dotenv = require('dotenv').config()
+const port = process.env.PORT || 8080
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 const db = require('./src/model/index')
-
-// db.sequelize.sync({force: true})
+db.sequelize.sync({force: false})
 
 app.set('view engine', 'ejs')
 app.set('views', './src/view')
@@ -32,15 +32,19 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 const indexRouter = require('./src/route/indexroute')
+const userRouter = require('./src/route/userroute')
+
 app.use(indexRouter)
-const PORT = process.env.PORT || 3000
+app.use(userRouter)
 
 app.use(session({
     secret : 'GroceryEcommerceWebsite@@##123321##@@GEW',
     resave: true,
     saveUninitialized: true,
 }))
-app.set('PORT', process.env.PORT || "8080");
+
+
+app.set('PORT', port);
 app.listen(app.get('PORT'), () => {
     console.log(`Server is running at port ${app.get('PORT')}`);
 });
