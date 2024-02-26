@@ -60,10 +60,11 @@ body {
 .form-input {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-top: 5px;
+    margin: 5px 0 10px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
     outline: none;
+
 }
 
 .form-input:focus {
@@ -110,14 +111,12 @@ body {
 .error-message {
     color: red;
     font-size: 0.75rem;
-    margin-top: 10px;
-    display: inline-block;
+    margin: 1px 0;
 }
 
 .valid-message {
     color: green;
     font-size: 0.75rem;
-    margin-top: 5px;
 }
 
 .text-center {
