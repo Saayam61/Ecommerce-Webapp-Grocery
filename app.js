@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 //input validator
 const expressValidator = require('express-validator');
 //for different domains(cross-origin resource sharing) for payemnt api
-const cors = require('cors');
+// const cors = require('cors');
 //order traking, user history, user preference, recently viewed
 //stored in server side
 const session = require('express-session');
@@ -28,8 +28,8 @@ db.sequelize.sync({force: false})
 app.set('view engine', 'ejs')
 app.set('views', './src/view')
 
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 const indexRouter = require('./src/route/indexroute')
 const userRouter = require('./src/route/userroute')
