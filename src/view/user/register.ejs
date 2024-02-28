@@ -4,7 +4,7 @@
 
 <body>
     <!-- Display server-side validation errors if any -->
-    <% if (errors && errors.length > 0) { %>
+    <!-- <% if (errors && errors.length > 0) { %>
         <div class="error-message">
             <ul>
                 <% errors.forEach(error => { %>
@@ -12,7 +12,7 @@
                 <% }); %>
             </ul>
         </div>
-    <% } %>
+    <% } %> -->
     <div class="container">
         <div class="logo">
             <img src="/images/favicon.png" alt="">
@@ -100,9 +100,6 @@
         </div>
     </div>
     <%- include('../partials/mini-footer') %>
-    <script>
-        const formData =  JSON.stringify(formData || {}) 
-    </script>
     <script src="/js/register.js"></script>
 </body>
 

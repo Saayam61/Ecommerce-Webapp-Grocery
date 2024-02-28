@@ -1,12 +1,20 @@
+const togglePassword = document.getElementById('togglePassword');
+const password = document.getElementById('password');
+
+togglePassword.addEventListener('click', function () {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.querySelector('img').src = type === 'password' ? '/images/eye-slash.svg' : '/images/eye.svg';
+});
+
 const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
 const confirmPassword = document.getElementById('confirmPassword');
 
 toggleConfirmPassword.addEventListener('click', function () {
     const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
     confirmPassword.setAttribute('type', type);
-    this.querySelector('img').src = type === 'password' ? '../images/eye-slash.svg' : '../images/eye.svg';
+    this.querySelector('img').src = type === 'password' ? '/images/eye-slash.svg' : '/images/eye.svg';
 });
-
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById('registrationForm');
 
@@ -151,35 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Function to display server-side validation errors
-    // function displayServerErrors(errors) {
-    //     errors.forEach(error => {
-    //         switch (error.param) {
-    //             case 'firstName':
-    //                 displayError('firstNameError', error.msg);
-    //                 break;
-    //             case 'lastName':
-    //                 displayError('lastNameError', error.msg);
-    //                 break;
-    //             case 'dob':
-    //                 displayError('dobError', error.msg);
-    //                 break;
-    //             case 'address':
-    //                 displayError('addressError', error.msg);
-    //                 break;
-    //             case 'phone':
-    //                 displayError('phoneError', error.msg);
-    //                 break;
-    //             case 'password':
-    //                 displayError('passwordError', error.msg);
-    //                 break;
-    //             case 'confirmPassword':
-    //                 displayError('confirmPasswordError', error.msg);
-    //                 break;
-    //             // Add cases for other fields as needed
-    //         }
-    //     });
-    // }
+    
 
     // // Fetch server-side validation errors if any
     // const serverErrors = document.getElementById('serverErrors');
@@ -235,13 +215,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    //Function to display server-side validation errors
     function displayServerErrors(errors) {
-        // Display server-side validation errors
         errors.forEach(error => {
-            const errorElement = document.getElementById(`${error.param}Error`);
-            errorElement.innerText = error.msg;
-            errorElement.style.display = 'block';
+            switch (error.path) {
+                case 'firstName':
+                    displayError('firstNameError', error.msg);
+                    break;
+                case 'lastName':
+                    displayError('lastNameError', error.msg);
+                    break;
+                case 'dob':
+                    displayError('dobError', error.msg);
+                    break;
+                case 'address':
+                    displayError('addressError', error.msg);
+                    break;
+                case 'phone':
+                    displayError('phoneError', error.msg);
+                    break;
+                case 'password':
+                    displayError('passwordError', error.msg);
+                    break;
+                case 'confirmPassword':
+                    displayError('confirmPasswordError', error.msg);
+                    break;
+                // Add cases for other fields as needed
+            }
         });
+    
+    // function displayServerErrors(errors) {
+    //     // Display server-side validation errors
+    //     errors.forEach(error => {
+    //         const errorElement = document.getElementById(`${error.param}Error`);
+    //         errorElement.innerText = error.msg;
+    //         errorElement.style.display = 'block';
+    //     });
+    // }
     }
-
 });
+console.log(responseData.errors)
