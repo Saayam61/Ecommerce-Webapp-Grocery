@@ -111,7 +111,7 @@ body {
 .error-message {
     color: red;
     font-size: 0.75rem;
-    margin: 1px 0;
+    margin: 1px 0px;
 }
 
 .valid-message {

@@ -28,7 +28,7 @@ sequelize
   });
 
 //model calls
-db.User = require('./user')(sequelize, Sequelize)
+db.User = require('./userModel')(sequelize, Sequelize)
 
 //model associations
 

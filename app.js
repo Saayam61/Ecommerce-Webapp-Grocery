@@ -8,8 +8,6 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 //input validator
 const expressValidator = require('express-validator');
-//for different domains(cross-origin resource sharing) for payemnt api
-// const cors = require('cors');
 //order traking, user history, user preference, recently viewed
 //stored in server side
 const session = require('express-session');
@@ -17,12 +15,13 @@ const session = require('express-session');
 //stored in client side
 const cookieParser = require('cookie-parser')
 //environment variables
-const dotenv = require('dotenv').config()
+require('dotenv').config()
+const flash = require('connect-flash')
 const port = process.env.PORT || 8080
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const db = require('./src/model/index')
+const db = require('./src/model/indexModel')
 db.sequelize.sync({force: false})
 
 app.set('view engine', 'ejs')
@@ -34,17 +33,19 @@ app.use(bodyParser.urlencoded({extended: false}));
 const indexRouter = require('./src/route/indexroute')
 const userRouter = require('./src/route/userroute')
 
-app.use(indexRouter)
-app.use(userRouter)
+
 
 app.use(session({
     secret : 'GroceryEcommerceWebsite@@##123321##@@GEW',
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
 }))
+app.use(flash())
+
+app.use(indexRouter)
+app.use(userRouter)
 
 
-app.set('PORT', port);
-app.listen(app.get('PORT'), () => {
-    console.log(`Server is running at port ${app.get('PORT')}`);
+app.listen(port, () => {
+    console.log(`Server is running at port ${port}`);
 });

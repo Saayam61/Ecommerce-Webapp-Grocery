@@ -97,19 +97,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // function validatePhone() {
-    //     const phoneValue = phone.value.trim();
-    //     const phoneRegex = /^\+977\d{10}$/;
-    //     if (!phoneRegex.test(phoneValue)) {
-    //         displayError('phoneError', 'Phone number should start with +977 followed by 10 digits.');
-    //         setInvalidInput(phone);
-    //         return false;
-    //     } else {
-    //         hideError('phoneError');
-    //         setValidInput(phone);
-    //         return true;
-    //     }
-    // }
+    function validatePhone() {
+        const phoneValue = phone.value.trim();
+        const phoneRegex = /^\+977\d{10}$/;
+        if (!phoneRegex.test(phoneValue)) {
+            displayError('phoneError', 'Phone number should start with +977 followed by 10 digits.');
+            setInvalidInput(phone);
+            return false;
+        } else {
+            hideError('phoneError');
+            setValidInput(phone);
+            return true;
+        }
+    }
 
     function validatePassword() {
         const passwordValue = password.value;
@@ -158,100 +158,5 @@ document.addEventListener("DOMContentLoaded", function () {
         inputElement.style.borderColor = 'green';
     }
 
-
-    
-
-    // // Fetch server-side validation errors if any
-    // const serverErrors = document.getElementById('serverErrors');
-    // if (serverErrors) {
-    //     const errors = JSON.parse(serverErrors.value);
-    //     displayServerErrors(errors);
-    // }
-
-    // fetch('/regdata')
-    // .then(response => {
-    //     if (!response.ok) {
-    //         throw new Error('Failed to fetch user data');
-    //     }
-    //     return response.json(); // Parse the JSON response
-    // })
-    // .then(userData => {
-    //     // Check if userData is empty or undefined
-    //     if (!userData) {
-    //         console.error('User data is empty or undefined');
-    //         // Handle this scenario, e.g., display an error message to the user
-    //     } else {
-    //         // Update form fields with the received user data
-    //         document.getElementById('firstName').value = userData.firstName || '';
-    //         document.getElementById('lastName').value = userData.lastName || '';
-    //         document.getElementById('dob').value = userData.dob || '';
-    //         document.getElementById('address').value = userData.address || '';
-    //         document.getElementById('phone').value = userData.phone || '';
-    //     }
-    // })
-    // .catch(error => {
-    //     console.error('Error fetching user data:', error);
-    //     // Display an error message to the user or handle the error in another way
-    // });
-
-    form.addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const formData = new FormData(form);
-       
-        // Get form data
-        const response = await fetch('/register', {
-            method: 'POST',
-            body: formData
-        });
-        console.log(formData)
-        if (response.ok) {
-            // If registration is successful, redirect to success page or handle accordingly
-            window.location.href = '/registration-success';
-        } else {
-            // If registration fails (due to validation errors or other reasons), handle errors
-            const responseData = await response.json();
-            displayServerErrors(responseData.errors);
-        }
-    });
-
-    //Function to display server-side validation errors
-    function displayServerErrors(errors) {
-        errors.forEach(error => {
-            switch (error.path) {
-                case 'firstName':
-                    displayError('firstNameError', error.msg);
-                    break;
-                case 'lastName':
-                    displayError('lastNameError', error.msg);
-                    break;
-                case 'dob':
-                    displayError('dobError', error.msg);
-                    break;
-                case 'address':
-                    displayError('addressError', error.msg);
-                    break;
-                case 'phone':
-                    displayError('phoneError', error.msg);
-                    break;
-                case 'password':
-                    displayError('passwordError', error.msg);
-                    break;
-                case 'confirmPassword':
-                    displayError('confirmPasswordError', error.msg);
-                    break;
-                // Add cases for other fields as needed
-            }
-        });
-    
-    // function displayServerErrors(errors) {
-    //     // Display server-side validation errors
-    //     errors.forEach(error => {
-    //         const errorElement = document.getElementById(`${error.param}Error`);
-    //         errorElement.innerText = error.msg;
-    //         errorElement.style.display = 'block';
-    //     });
-    // }
-    }
 });
-console.log(responseData.errors)
+
