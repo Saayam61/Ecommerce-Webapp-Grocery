@@ -27,11 +27,12 @@ db.sequelize.sync({force: false})
 app.set('view engine', 'ejs')
 app.set('views', './src/view')
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 const indexRouter = require('./src/route/indexroute')
-const userRouter = require('./src/route/userroute')
+const userRouter = require('./src/route/userroute');
+// const exp = require('constants');
 
 
 

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
-const { getRegistrationPage, registerUser } = require('../controller/userController');
-const catchError = require('../../services/catchError');
+const { getRegistrationPage, registerUser, registerMessage, sendOTP, getVerificationPage} = require('../controller/userController');
+const catchError = require('../services/catchError');
 
 // Validation and registration combined into a single function
 const validateAndRegisterUser = catchError(async (req, res) => {
@@ -20,7 +20,7 @@ const validateAndRegisterUser = catchError(async (req, res) => {
             return true;
         }).run(req);
     await body('address').notEmpty().matches(/^[A-Za-z0-9\s,'-]*$/).withMessage('Invalid characters in address.').run(req);
-    await body('phone').notEmpty().matches(/^\+977\d{10}$/).withMessage('Phone number should start with +977 followed by 10 digits.').run(req);
+    await body('email').notEmpty().matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).withMessage('Invalid Email address.').run(req);
     await body('password').notEmpty().isLength({ min: 8 }).withMessage('Password must be at least 8 characters long.')
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
         .withMessage('Password must contain at least 1 lowercase, 1 uppercase, 1 number, and 1 symbol.').run(req);
@@ -36,5 +36,10 @@ const validateAndRegisterUser = catchError(async (req, res) => {
 });
 
 router.route("/register").get(catchError(getRegistrationPage)).post(catchError(validateAndRegisterUser));
+
+
+router.route('/verifyRegistration').get(catchError(getVerificationPage))
+router.route('/verifyRegistration/:id').post(catchError(sendOTP));
+
 
 module.exports = router;

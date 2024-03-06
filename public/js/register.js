@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastName = document.getElementById('lastName');
     const dob = document.getElementById('dob');
     const address = document.getElementById('address');
-    const phone = document.getElementById('phone');
+    const phone = document.getElementById('email');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirmPassword');
 
@@ -31,13 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
     lastName.addEventListener('input', validateLastName);
     dob.addEventListener('input', validateDOB);
     address.addEventListener('input', validateAddress);
-    phone.addEventListener('input', validatePhone);
+    phone.addEventListener('input', validateEmail);
     password.addEventListener('input', validatePassword);
     confirmPassword.addEventListener('input', validateConfirmPassword);
 
     form.addEventListener('submit', function (event) {
         // Perform final validation before form submission
-        if (!validateFirstName() || !validateLastName() || !validateDOB() || !validateAddress() || !validatePhone() || !validatePassword() || !validateConfirmPassword()) {
+        if (!validateFirstName() || !validateLastName() || !validateDOB() || !validateAddress() || !validateEmail() || !validatePassword() || !validateConfirmPassword()) {
             // Prevent the default form submission if any validation fails
             event.preventDefault();
         }
@@ -97,19 +97,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function validatePhone() {
-        const phoneValue = phone.value.trim();
-        const phoneRegex = /^\+977\d{10}$/;
-        if (!phoneRegex.test(phoneValue)) {
-            displayError('phoneError', 'Phone number should start with +977 followed by 10 digits.');
-            setInvalidInput(phone);
+    function validateEmail() {
+        const emailValue = email.value.trim(); // Assuming there's an input field with id 'email'
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for basic email validation
+        if (!emailRegex.test(emailValue)) {
+            displayError('emailError', 'Invalid email address.');
+            setInvalidInput(email);
             return false;
         } else {
-            hideError('phoneError');
-            setValidInput(phone);
+            hideError('emailError');
+            setValidInput(email);
             return true;
         }
     }
+    
 
     function validatePassword() {
         const passwordValue = password.value;
@@ -157,6 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function setValidInput(inputElement) {
         inputElement.style.borderColor = 'green';
     }
-
+    
 });
 

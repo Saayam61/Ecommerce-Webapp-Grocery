@@ -1,0 +1,31 @@
+<form action="/verifyRegistration/<%- email %>" method="post">
+  <!DOCTYPE html>
+  <html lang="en">
+  <%- include('../partials/head') %>
+
+    <body>
+      <div class="container">
+        <h1>OTP Sending and Verifying Page</h1>
+        <div id="otpForm">
+          <h2>Send OTP</h2>
+          <form id="sendOTPForm" action="/verifyRegistration/<%- email %>>
+            <label for="email">Email:</label>
+            <!-- <input type="email" id="email" name="email" required> -->
+            <button type="submit">Send OTP</button>
+          </form>
+        </div>
+        <div id="verifyOTPForm" style="display: none;">
+          <h2>Verify OTP</h2>
+          <form id="verifyOTP">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" name="otp" required>
+            <button type="submit">Verify OTP</button>
+          </form>
+        </div>
+        <div id="message"></div>
+      </div>
+      <%- include('../partials/mini-footer') %>
+      <script src="/js/otp.js"></script>
+    </body>
+
+  </html>

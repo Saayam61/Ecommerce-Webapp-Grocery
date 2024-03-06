@@ -3,104 +3,125 @@
 <%- include('../partials/head') %>
 
     <body>
-                <div class="container">
-                    <div class="logo">
-                        <img src="/images/favicon.png" alt="">
-                    </div>
-                    <div class="form-wrapper">
-                        <div class="form-header">
-                            <h2>User Registration</h2>
-                        </div>
-                        <div class="form-content">
-                            <form id="registrationForm" action="/register" method="post"
-                                enctype="application/x-www-form-urlencoded">
-                                <% if (errors) { %>
-                                    <div class="error-message">
-                                        <ul>
-                                            <% errors.forEach(error => { %>
-                                                <li><%= error.msg %></li>
-                                            <% }); %>
-                                        </ul>
-                                    </div>
-                                <% } %>
-                                <div class="form-start">
-                                    <div class="width48">
-                                        <div class="form-group">
-                                            <label for="firstName" class="form-label">First Name</label>
-                                            <input type="text" id="firstName" class="form-input" name="firstName"
-                                                placeholder="Enter your first name" value="<%= formData.firstName %>"
-                                                required>
-                                            <span class="error-message" class="error" id="firstNameError"></span>
-                                        </div>
-                                    </div>
-                                    <div class="width48">
-                                        <div class="form-group">
-                                            <label for="lastName" class="form-label">Last Name</label>
-                                            <input type="text" id="lastName" class="form-input" name="lastName"
-                                                placeholder="Enter your last name" value="<%= formData.lastName %>"
-                                                required>
-                                            <span class="error-message" id="lastNameError"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" id="dob" class="form-input" name="dob"
-                                        value="<%= formData.dob %>" required>
-                                    <span class="error-message" id="dobError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" id="address" class="form-input" name="address"
-                                        placeholder="Enter your address" value="<%= formData.address %>" required>
-                                    <span class="error-message" class="error" id="addressError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" id="phone" class="form-input" name="phone"
-                                        placeholder="+977XXXXXXXXX" value="<%= formData.phone %>" required>
-                                    <span class="error-message" id="phoneError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="form-label">Password</label>
-                                    <div class="pw-wrapper">
-                                        <input type="password" id="password" class="form-input pr-12" name="password"
-                                            placeholder="Enter your password" required autocomplete="off">
-                                        <button type="button" class="toggle-password" id="togglePassword">
-                                            <img src="/images/eye-slash.svg" alt="Toggle Password">
-                                        </button>
-                                    </div>
-                                    <span class="error-message" id="passwordError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                    <div class="pw-wrapper">
-                                        <input type="password" id="confirmPassword" class="form-input pr-12"
-                                            name="cpassword" placeholder="Confirm your password" required
-                                            autocomplete="off">
-                                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
-                                            <img src="/images/eye-slash.svg" alt="Toggle Password">
-                                        </button>
-                                    </div>
-                                    <span class="error-message" id="confirmPasswordError"></span>
-                                </div>
-                                <div class="terms">
-                                    <p>By registering, you agree to our <a href="#">terms and
-                                            conditions</a>.</p>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="form-button">Register</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="login-link">
-                        <text>Already have an account? <a href="#">Login here</a>.</text>
-                    </div>
+        <div class="container">
+            <div class="logo">
+                <img src="/images/favicon.png" alt="">
+            </div>
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h2>User Registration</h2>
                 </div>
-                <%- include('../partials/mini-footer') %>
-                    <script src="/js/register.js"></script>
+                <div class="form-content">
+                    <form id="registrationForm" action="/register" method="post"
+                        enctype="application/x-www-form-urlencoded">
+                        <% if (errors) { %>
+                            <div class="error-message">
+                                <ul>
+                                    <% errors.forEach(error=> { %>
+                                        <li>
+                                            <%= error.msg %>
+                                        </li>
+                                        <% }); %>
+                                </ul>
+                            </div>
+                            <% } %>
+
+                                <% if (success) { %>
+   
+                                    <div id="flash-message" class="flash-container">
+
+                                        <div class="alert">
+                                            <%- success %>
+                                        </div>
+                                        <h4 class="alerth4"></h4>
+                                        <div class="ok-button">
+                                            <a href="/index">OK</a>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <div class="form-start">
+                                            <div class="width48">
+                                                <div class="form-group">
+                                                    <label for="firstName" class="form-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-input"
+                                                        name="firstName" placeholder="Enter your first name"
+                                                        value="<%= formData.firstName %>" required autocomplete="on">
+                                                    <span class="error-message" class="error"
+                                                        id="firstNameError"></span>
+                                                </div>
+                                            </div>
+                                            <div class="width48">
+                                                <div class="form-group">
+                                                    <label for="lastName" class="form-label">Last Name</label>
+                                                    <input type="text" id="lastName" class="form-input" name="lastName"
+                                                        placeholder="Enter your last name"
+                                                        value="<%= formData.lastName %>" required autocomplete="on">
+                                                    <span class="error-message" id="lastNameError"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dob" class="form-label">Date of Birth</label>
+                                            <input type="date" id="dob" class="form-input" name="dob"
+                                                value="<%= formData.dob %>" required>
+                                            <span class="error-message" id="dobError"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" id="address" class="form-input" name="address"
+                                                placeholder="Enter your address" value="<%= formData.address %>"
+                                                required>
+                                            <span class="error-message" class="error" id="addressError"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone" class="form-label">Email</label>
+                                            <input type="email" id="email" class="form-input" name="email"
+                                                placeholder="youremail@gmail.com" value="<%= formData.phone %>" required
+                                                autocomplete="on">
+                                            <span class="error-message" id="emailError"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="form-label">Password</label>
+                                            <div class="pw-wrapper">
+                                                <input type="password" id="password" class="form-input pr-12"
+                                                    name="password" placeholder="Enter your password" required
+                                                    autocomplete="off">
+                                                <button type="button" class="toggle-password" id="togglePassword">
+                                                    <img src="/images/eye-slash.svg" alt="Toggle Password">
+                                                </button>
+                                            </div>
+                                            <span class="error-message" id="passwordError"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                            <div class="pw-wrapper">
+                                                <input type="password" id="confirmPassword" class="form-input pr-12"
+                                                    name="cpassword" placeholder="Confirm your password" required
+                                                    autocomplete="off">
+                                                <button type="button" class="toggle-password"
+                                                    id="toggleConfirmPassword">
+                                                    <img src="/images/eye-slash.svg" alt="Toggle Password">
+                                                </button>
+                                            </div>
+                                            <span class="error-message" id="confirmPasswordError"></span>
+                                        </div>
+                                        <div class="terms">
+                                            <p>By registering, you agree to our <a href="#">terms and
+                                                    conditions</a>.</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="form-button">Register</button>
+                                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="login-link">
+                <text>Already have an account? <a href="#">Login here</a>.</text>
+            </div>
+        </div>
+        <%- include('../partials/mini-footer') %>
+            <script src="/js/register.js"></script>
     </body>
 
 </html>
